@@ -44,3 +44,6 @@ RUN cd /root/ltsinfo/ \
 COPY ./cases/ /root/cases/
 
 COPY ./scripts/ /root/scripts/
+
+# Run the script
+RUN python3 /root/scripts/run.py --toolpath /root/mCRL2/build/stage/bin/

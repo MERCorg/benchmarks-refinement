@@ -7,13 +7,13 @@ import json
 
 SCRIPT_PATH=os.path.dirname(__file__)
 
-def prepare():
+def prepare(toolpath):
     
-    mcrl22lps = shutil.which("mcrl22lps")
+    mcrl22lps = shutil.which("mcrl22lps", toolpath)
     if mcrl22lps is None:
         raise FileNotFoundError("mcrl22lps not found in PATH")
 
-    lps2lts = shutil.which("lps2lts")
+    lps2lts = shutil.which("lps2lts", toolpath)
     if lps2lts is None:
         raise FileNotFoundError("lps2lts not found in PATH")
 
@@ -51,18 +51,15 @@ def main():
     )
     args = parser.parse_args()
 
-    # Set the PATH environment variable for the toolset
-    os.environ["PATH"] = args.toolpath + os.pathsep + os.environ["PATH"]
-
     # Prepare the examples for testing
-    prepare()
+    prepare(args.toolpath)
 
     # Set the toolset path
-    ltscompare_bin = shutil.which("ltscompare")
+    ltscompare_bin = shutil.which("ltscompare", args.toolpath)
     if ltscompare_bin is None:
         raise FileNotFoundError("ltscompare not found in PATH")
     
-    timeout = shutil.which("timeout")
+    timeout = shutil.which("timeout", args.toolpath)
     if timeout is None:
         raise FileNotFoundError("timeout not found in PATH")
 
