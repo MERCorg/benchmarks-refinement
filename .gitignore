@@ -1,3 +1,6 @@
+# Python virtual environment
+.venv/
+
 # Temporary files created by mCRL2
 *.lps
 *.aut

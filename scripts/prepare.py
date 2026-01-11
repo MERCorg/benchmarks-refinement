@@ -4,14 +4,9 @@
 import argparse
 import os
 import shutil
-import subprocess
-import sys
+from merc import MercLogger, RunProcess
 
 SCRIPT_PATH = os.path.dirname(__file__)
-
-# make parent directory importable so we can import merc as a module
-sys.path.insert(0, os.path.join(SCRIPT_PATH, "..", "merc-py"))
-from merc import MercLogger, RunProcess
 
 def prepare(logger: MercLogger, toolpath: str, cases_path: str):
     """"Prepares the case specifications for benchmarking"""
