@@ -12,12 +12,12 @@ def prepare(logger: MercLogger, toolpath: str, cases_path: str):
     """"Prepares the case specifications for benchmarking"""
     mcrl22lps = shutil.which("mcrl22lps", path=toolpath)
     if mcrl22lps is None:
-        raise FileNotFoundError("mcrl22lps not found in")
+        raise FileNotFoundError(f"mcrl22lps not found in {toolpath}")
 
     lps2lts = shutil.which("lps2lts", path=toolpath)
     if lps2lts is None:
-        raise FileNotFoundError("lps2lts not found in")
-
+        raise FileNotFoundError(f"lps2lts not found in {toolpath}")
+    
     # Iterate over all files in the specified directory
     for directory in os.listdir(cases_path):
         if not os.path.isdir(os.path.join(cases_path, directory)) or "auts" in directory:

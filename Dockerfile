@@ -26,7 +26,7 @@ RUN mkdir /root/mCRL2/build && cd /root/mCRL2/build && cmake . \
 
 # Build the toolset and install it such that the tools are available on the PATH
 ARG THREADS=8
-RUN cd /root/mCRL2/build && make -j${THREADS} mcrl22lps lps2lts
+RUN cd /root/mCRL2/build && make -j${THREADS} mcrl22lps lps2lts ltscompare
 
 # Install Rust for building merc-lts
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
