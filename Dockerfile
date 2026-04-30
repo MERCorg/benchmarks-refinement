@@ -47,3 +47,4 @@ RUN /root/.venv/bin/pip install /root/merc-py
 
 # Copy the scripts
 COPY ./scripts /root/scripts/
+RUN python3 /root/scripts/prepare.py 
