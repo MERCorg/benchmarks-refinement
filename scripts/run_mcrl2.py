@@ -1,8 +1,12 @@
 import argparse
+import re
 from run import run_benchmark
 
 SCRIPT_PATH = __file__
 
+# working (current: x, max: y) (hits: 82780, misses: 1311765, size: 3, max: 3306)
+INNER_ANTICHAIN_REGEX=re.compile(r"\[debug\]\s*Inner antichain: working \(current: (\d+), max: (\d+)\).\n\[debug\]\s*antichain \(hits: (\d+), misses: (\d+), size: (\d+), max: (\d+)\)\n")
+OUTER_ANTICHAIN_REGEX=re.compile(r"\[debug\]\s*Outer antichain: working \(current: (\d+), max: (\d+)\).\n\[debug\]\s*antichain \(hits: (\d+), misses: (\d+), size: (\d+), max: (\d+)\)\n")
 
 def main():
     # Parse some configuration options
