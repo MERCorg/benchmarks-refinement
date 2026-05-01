@@ -46,20 +46,20 @@ def main():
     directories = sorted(set(d for d, a in stats.keys()))
     algorithms = sorted(set(a for d, a in stats.keys()))
     
-    # Print table header
-    print(f"{'Directory':<25} | {' | '.join(f'{algo:<15}' for algo in algorithms)}")
-    print("-" * (25 + 3 + len(algorithms) * 19))
-    
+    # Print markdown table header
+    print(f"| {'Directory':<25} | {' | '.join(f'{algo:<15}' for algo in algorithms)} |")
+    print(f"| {'-'*25} | {' | '.join(f'{'-'*15}' for _ in algorithms)} |")
+
     # Print table rows
     for directory in directories:
-        row_parts = [f"{directory:<25}"]
+        row_parts = [f"| {directory:<25}"]
         for algorithm in algorithms:
             if (directory, algorithm) in stats:
                 avg_time = stats[(directory, algorithm)]["avg"]
                 row_parts.append(f"{avg_time:>14.6f}s")
             else:
                 row_parts.append(f"{'N/A':>14}")
-        print(" | ".join(row_parts))
+        print(" | ".join(row_parts) + " |")
 
 if __name__ == "__main__":
     main()
