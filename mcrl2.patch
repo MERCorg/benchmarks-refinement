@@ -1,0 +1,22 @@
+diff --git a/libraries/lts/include/mcrl2/lts/detail/liblts_failures_refinement.h b/libraries/lts/include/mcrl2/lts/detail/liblts_failures_refinement.h
+index 178f8b2de3..edabaf6353 100644
+--- a/libraries/lts/include/mcrl2/lts/detail/liblts_failures_refinement.h
++++ b/libraries/lts/include/mcrl2/lts/detail/liblts_failures_refinement.h
+@@ -250,7 +250,7 @@ bool destructive_refinement_checker(LTS_TYPE& l1,
+   // <a,{a}>, <a,{}> while the rhs has only failure pairs <a,{}>, as the state after the a is not stable.
+   const bool preserve_divergence = weak_reduction && (refinement != refinement_type::trace);
+ 
+-  if (!generate_counter_example.is_dummy() && preprocess)
++  if (!generate_counter_example.is_dummy() && false)
+   {
+     // Counter example is requested, apply bisimulation to l2.
+     reduce(l2, weak_reduction, preserve_divergence, l2.initial_state());
+@@ -260,7 +260,7 @@ bool destructive_refinement_checker(LTS_TYPE& l1,
+   mcrl2::lts::detail::merge(l1, l2);
+   l2.clear(); // No use for l2 anymore.
+ 
+-  if (generate_counter_example.is_dummy() && preprocess)
++  if (generate_counter_example.is_dummy() && false)
+   {
+     // No counter example is requested. We can use bisimulation preprocessing.
+     bool initial_equal = false;
